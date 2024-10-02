@@ -1,6 +1,7 @@
-﻿namespace PersonCatalog.Application.Person.Commands.CreatePerson;
+﻿namespace PersonCatalog.Application.PersonDirectory.Commands.CreatePerson;
 
-public record CreatePersonCommand(PersonDto Person);
+public record CreatePersonCommand(PersonDto Person) 
+    :ICommand<CreatePersonResult>;
 
 public record CreatePersonResult(Guid Id);
 

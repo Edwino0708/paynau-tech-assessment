@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Person\EventHandlers\Domain\" />
-    <Folder Include="Person\EventHandlers\Integration\" />
-    <Folder Include="Person\Queries\" />
+    <Folder Include="PersonDirectory\EventHandlers\Domain\" />
+    <Folder Include="PersonDirectory\EventHandlers\Integration\" />
+    <Folder Include="PersonDirectory\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>
