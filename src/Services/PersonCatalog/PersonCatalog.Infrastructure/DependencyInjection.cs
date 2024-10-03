@@ -7,13 +7,19 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("Database");
 
-        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        services.AddSingleton<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-            options.AddInterceptors(sp.GetService<ISaveChangesInterceptor>());
+            options.UseMySql(connectionString, 
+                ServerVersion.AutoDetect(connectionString),
+                options => options.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: System.TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: null));
+
+            options.AddInterceptors(sp.GetRequiredService<ISaveChangesInterceptor>());
         });
 
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();

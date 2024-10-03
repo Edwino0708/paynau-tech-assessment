@@ -1,0 +1,31 @@
+services:    
+  personCatalogdb:
+    container_name: mysql_container
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_DATABASE=PersonCatalogDb
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  personcatalog.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    depends_on:
+      - personCatalogdb
+    ports:
+      - "4000:8080"
+      - "4041:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+volumes:
+  mysql_data:
+    

@@ -10,10 +10,11 @@ public class Person : Aggregate<PersonId>
     public string Nationality { get; private set; } = default!;
     public string Occupation { get; private set; } = default!;
 
-    public static Person Create(PersonId id, string fullName, DateTime dateOfBirth, string email, string phoneNumber, string address, GenderStatus genderStatus, string nationality, string ocupation)
+    public static Person Create(PersonId id, string fullName, DateTime dateOfBirth, string email, string phoneNumber, string address, GenderStatus genderStatus, string nationality, string occupation)
     {
         var person = new Person
         {
+            Id = id,
             FullName = fullName,
             DateOfBirth = dateOfBirth,
             Email = email,
@@ -21,7 +22,7 @@ public class Person : Aggregate<PersonId>
             Address = address,
             Gender = genderStatus,
             Nationality = nationality,
-            Occupation = ocupation
+            Occupation = occupation
         };
 
         person.AddDomainEvent(new PersonCreatedEvent(person));

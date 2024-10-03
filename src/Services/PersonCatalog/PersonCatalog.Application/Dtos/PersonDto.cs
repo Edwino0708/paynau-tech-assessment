@@ -1,6 +1,7 @@
 ﻿namespace PersonCatalog.Application.Dtos;
 
 public record PersonDto(
+    Guid Id,
     string FullName,
     DateTime DateOfBirth,
     string Email,

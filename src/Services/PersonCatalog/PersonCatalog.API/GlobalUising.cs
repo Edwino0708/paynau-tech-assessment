@@ -1,0 +1,13 @@
+﻿global using Carter;
+global using MediatR;
+global using Mapster;
+global using BuildingBlock.Pagination;
+global using BuildingBlock.Exceptions.Handler;
+global using PersonCatalog.Application;
+global using PersonCatalog.Infrastructure;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using PersonCatalog.API;
+global using PersonCatalog.Application.Dtos;
+global using PersonCatalog.Application.PersonDirectory.Commands.CreatePerson;
+global using PersonCatalog.Application.PersonDirectory.Queries.GetPersons;

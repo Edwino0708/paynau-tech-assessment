@@ -5,17 +5,19 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{85B281AC-6CFA-4FB4-AE68-7B1329DF82B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonCatalog.Domain", "src\Services\PersonCatalog\PersonCatalog.Domain\PersonCatalog.Domain.csproj", "{5070A3DB-6F12-4247-9E0D-423FFF63F0FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonCatalog.Domain", "src\Services\PersonCatalog\PersonCatalog.Domain\PersonCatalog.Domain.csproj", "{5070A3DB-6F12-4247-9E0D-423FFF63F0FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonCatalog.Application", "src\Services\PersonCatalog\PersonCatalog.Application\PersonCatalog.Application.csproj", "{84DE83F1-4ABD-416C-8F54-3FDCFF8B7502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonCatalog.Application", "src\Services\PersonCatalog\PersonCatalog.Application\PersonCatalog.Application.csproj", "{84DE83F1-4ABD-416C-8F54-3FDCFF8B7502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonCatalog.Infrastructure", "src\Services\PersonCatalog\PersonCatalog.Infrastructure\PersonCatalog.Infrastructure.csproj", "{0C08308D-B8AA-4917-AC69-35451A398614}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonCatalog.Infrastructure", "src\Services\PersonCatalog\PersonCatalog.Infrastructure\PersonCatalog.Infrastructure.csproj", "{0C08308D-B8AA-4917-AC69-35451A398614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonCatalog.API", "src\Services\PersonCatalog\PersonCatalog.API\PersonCatalog.API.csproj", "{AFF18F63-00A4-4D96-B911-8409DB7AC50C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonCatalog.API", "src\Services\PersonCatalog\PersonCatalog.API\PersonCatalog.API.csproj", "{AFF18F63-00A4-4D96-B911-8409DB7AC50C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{95860626-3B79-44EC-97CC-F6466581416B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlock", "src\BuildingBlocks\BuildingBlock\BuildingBlock.csproj", "{4A7B39E2-128C-40B4-BD15-430E3BE08F8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlock", "src\BuildingBlocks\BuildingBlock\BuildingBlock.csproj", "{4A7B39E2-128C-40B4-BD15-430E3BE08F8C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FA42607C-FB50-48E4-A834-09CEEF995882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{4A7B39E2-128C-40B4-BD15-430E3BE08F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A7B39E2-128C-40B4-BD15-430E3BE08F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A7B39E2-128C-40B4-BD15-430E3BE08F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA42607C-FB50-48E4-A834-09CEEF995882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA42607C-FB50-48E4-A834-09CEEF995882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA42607C-FB50-48E4-A834-09CEEF995882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA42607C-FB50-48E4-A834-09CEEF995882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

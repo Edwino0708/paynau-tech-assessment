@@ -1,0 +1,9 @@
+services:
+  personCatalogdb:
+    image: mysql:8.0
+
+  personcatalog.api:
+    image: ${DOCKER_REGISTRY-}personcatalogapi
+    build:
+      context: src
+      dockerfile: Services/PersonCatalog/PersonCatalog.API/Dockerfile

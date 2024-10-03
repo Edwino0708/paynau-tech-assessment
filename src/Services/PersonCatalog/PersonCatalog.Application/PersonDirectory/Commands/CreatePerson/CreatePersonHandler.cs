@@ -1,13 +1,32 @@
-﻿
-namespace PersonCatalog.Application.PersonDirectory.Commands.CreatePerson;
+﻿namespace PersonCatalog.Application.PersonDirectory.Commands.CreatePerson;
 
-public class CreatePersonHandler()
+public class CreatePersonHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreatePersonCommand, CreatePersonResult>
 
 {
-    public Task<CreatePersonResult> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
+    public async Task<CreatePersonResult> Handle(CreatePersonCommand command, CancellationToken cancellationToken)
     {
+        var person = CreateNewPerson(command.Person);
 
-        throw new NotImplementedException();
+        dbContext.Persons.Add(person);
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        return new CreatePersonResult(person.Id.Value);
+    }
+
+    private Person CreateNewPerson(PersonDto personDto) 
+    {
+        return Person.Create
+            (
+              id: PersonId.Of(Guid.NewGuid()),
+              fullName: personDto.FullName,
+              dateOfBirth: personDto.DateOfBirth,
+              email : personDto.Email,
+              phoneNumber: personDto.PhoneNumber,
+              address : personDto.Address,
+              genderStatus : personDto.Gender,
+              nationality: personDto.Nationality,
+              occupation : personDto.Occupation
+            );
     }
 }

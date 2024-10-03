@@ -2,6 +2,6 @@
 
 public enum GenderStatus : int
 {
-    MASCULIDO = 0,
-    FEMENINO = 1
+    MALE = 0,
+    FEMALE = 1
 }
