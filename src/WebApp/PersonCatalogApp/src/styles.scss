@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1; // Toma el resto del espacio
+}
+
+.sidebar {
+  @apply bg-gray-700 text-white h-full transition-all; // Estilo del sidebar
+  width: 16rem; // Ancho expandido (puedes ajustar esto)
+  height: 100vh; // Altura completa
+}
+
+.hidden {
+  display: none; // Oculta el sidebar cuando no está visible
+}
+
+.main-content {
+  @apply flex-1; // Esto permite que el contenido principal ocupe el resto del espacio
+}

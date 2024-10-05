@@ -1,0 +1,26 @@
+.menu {
+  @apply flex justify-end items-center space-x-6; // Alinea el contenido a la derecha y agrega espacio entre los elementos
+}
+
+.nav-button {
+  @apply font-semibold py-2 px-4 rounded-md transition duration-300; // Estilo general de los botones
+
+  // Asegurarte de que el texto siempre sea blanco
+  color: white !important; // Usa !important para forzar el color blanco
+}
+
+.accent-button {
+  @apply bg-blue-500; // Color de fondo para el botón "Lista de Personas"
+
+  &:hover {
+    @apply bg-blue-700; // Color al pasar el mouse
+  }
+}
+
+.warn-button {
+  @apply bg-red-500; // Color de fondo para el botón "Crear Persona"
+
+  &:hover {
+    @apply bg-red-700; // Color al pasar el mouse
+  }
+}

@@ -1,0 +1,11 @@
+.sidebar {
+  transition: width 0.3s;
+}
+
+.sidebar-collapsed {
+  width: 50px;
+}
+
+.sidebar-expanded {
+  width: 250px;
+}

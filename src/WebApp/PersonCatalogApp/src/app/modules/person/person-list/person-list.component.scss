@@ -1,0 +1,13 @@
+.container {
+  @apply max-w-4xl mx-auto my-4;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+  }
+}

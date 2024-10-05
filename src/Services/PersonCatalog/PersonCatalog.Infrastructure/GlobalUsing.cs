@@ -11,5 +11,4 @@ global using Microsoft.AspNetCore.Builder;
 global using PersonCatalog.Domain.Abstractions;
 global using Microsoft.EntityFrameworkCore.ChangeTracking;
 global using PersonCatalog.Infrastructure.Data.Interceptors;
-global using PersonCatalog.Domain.Enums;
 global using PersonCatalog.Domain.ValueObjects;

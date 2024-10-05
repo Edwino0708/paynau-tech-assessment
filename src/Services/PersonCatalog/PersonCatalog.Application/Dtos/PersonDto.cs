@@ -7,7 +7,7 @@ public record PersonDto(
     string Email,
     string PhoneNumber,
     string Address,
-    GenderStatus Gender,
+    string Gender,
     string Nationality,
     string Occupation
     );

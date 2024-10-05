@@ -1,0 +1,9 @@
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
+<div class="flex flex-col md:flex-row">
+  <div [ngClass]="{'sidebar-collapsed': isSidebarCollapsed, 'sidebar-expanded': !isSidebarCollapsed}" class="sidebar transition-all duration-300">
+    <app-sidebar [isCollapsed]="isSidebarCollapsed"></app-sidebar>
+  </div>
+  <div class="flex-1 main-content p-4 md:p-6 lg:p-8">
+    <app-main></app-main>
+  </div>
+</div>

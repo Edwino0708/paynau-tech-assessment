@@ -9,17 +9,31 @@ public static class DependencyInjection
         services.AddHealthChecks()
            .AddMySql(configuration.GetConnectionString("Database")!);
 
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigins",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+        });
+
         return services;
     }
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
+        app.UseCors("AllowSpecificOrigins");
+
         app.MapCarter();
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health", new HealthCheckOptions 
         {
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
+
         return app;
     }
 

@@ -1,0 +1,29 @@
+<div [ngClass]="{'collapsed': isCollapsed}" class="bg-gray-700 text-white sidebar">
+  <ul>
+    <li *ngFor="let item of menuItems" class="my-2">
+      <a
+        [routerLink]="item.route"
+        class="flex items-center p-2 hover:bg-gray-600 rounded h-full w-full"
+        [ngClass]="{'bg-gray-800': item.isActive}"
+        (click)="setActive(item)"
+      >
+        <mat-icon class="text-2xl">{{ item.icon }}</mat-icon>
+        <span *ngIf="!isCollapsed" class="mr-2">{{ item.name }}</span>
+      </a>
+      <!-- Submenú -->
+      <ul *ngIf="item.subMenu && item.isOpen" class="ml-4 mt-1 bg-gray-600 rounded">
+        <li *ngFor="let subItem of item.subMenu" class="my-1">
+          <a
+            [routerLink]="subItem.route"
+            class="flex items-center p-2 hover:bg-gray-500 rounded h-full w-full"
+            [ngClass]="{'bg-gray-700 text-white': subItem.isActive}"
+            (click)="setActive(subItem)"
+          >
+            <mat-icon class="text-xl">{{ subItem.icon }}</mat-icon>
+            <span *ngIf="!isCollapsed" class="mr-2">{{ subItem.name }}</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+
+<div class="person-page-container">
+
+  <app-person-menu (menuSelected)="onMenuSelected($event)"></app-person-menu>
+
+  <!-- Componente de la lista de personas o el componente seleccionado -->
+  <ng-container *ngIf="selectedComponent === 'personList'">
+    <app-person-list (actionTriggered)="onActionTriggered($event)" ></app-person-list>
+  </ng-container>
+  <ng-container *ngIf="selectedComponent === 'personCreate'">
+    <app-person-create></app-person-create>
+  </ng-container>
+  <ng-container *ngIf="selectedComponent === 'personUpdate'">
+    <app-person-update [personId]="selectedPersonId"></app-person-update>
+  </ng-container>
+</div>

@@ -1,0 +1,27 @@
+.person-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.create-person-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-person-button:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+}
+
+.create-person-button mat-icon {
+  margin-right: 5px;
+}

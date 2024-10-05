@@ -1,0 +1,90 @@
+<!-- src/app/person/components/person-update/person-update.component.html -->
+<div class="p-4">
+  <h2 class="text-2xl font-bold mb-4">Actualizar Persona</h2>
+
+  <app-error-dialog [message]="errorMessage"></app-error-dialog>
+
+  <form [formGroup]="personForm" (ngSubmit)="updatePerson()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="mb-4 hidden">
+      <label class="block mb-2" for="id">ID</label>
+      <input id="id" formControlName="id" class="input" />
+      <div *ngIf="personForm.get('id')?.invalid && personForm.get('id')?.touched" class="text-red-500">
+        El ID es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="fullName">Nombre Completo</label>
+      <input id="fullName" formControlName="fullName" class="input" />
+      <div *ngIf="personForm.get('fullName')?.invalid && personForm.get('fullName')?.touched" class="text-red-500">
+        El nombre completo es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="dateOfBirth">Fecha de Nacimiento</label>
+      <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="input" />
+      <div *ngIf="personForm.get('dateOfBirth')?.invalid && personForm.get('dateOfBirth')?.touched" class="text-red-500">
+        La fecha de nacimiento es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="email">Correo Electrónico</label>
+      <input type="email" id="email" formControlName="email" class="input" />
+      <div *ngIf="personForm.get('email')?.invalid && personForm.get('email')?.touched" class="text-red-500">
+        Debe ser un correo electrónico válido.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="phoneNumber">Número de Teléfono</label>
+      <input id="phoneNumber" formControlName="phoneNumber" class="input" />
+      <div *ngIf="personForm.get('phoneNumber')?.invalid && personForm.get('phoneNumber')?.touched" class="text-red-500">
+        El número de teléfono es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="address">Dirección</label>
+      <input id="address" formControlName="address" class="input" />
+      <div *ngIf="personForm.get('address')?.invalid && personForm.get('address')?.touched" class="text-red-500">
+        La dirección es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="gender">Género</label>
+      <select id="gender" formControlName="gender" class="input">
+        <option value="">Seleccione</option>
+        <option *ngFor="let gender of genderKeys()" [value]="gender">
+          {{ gender | genderText }}
+        </option>
+      </select>
+      <div *ngIf="personForm.get('gender')?.invalid && personForm.get('gender')?.touched" class="text-red-500">
+        El género es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="nationality">Nacionalidad</label>
+      <input id="nationality" formControlName="nationality" class="input" />
+      <div *ngIf="personForm.get('nationality')?.invalid && personForm.get('nationality')?.touched" class="text-red-500">
+        La nacionalidad es opcional, pero si se proporciona, debe ser válida.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2" for="occupation">Ocupación</label>
+      <input id="occupation" formControlName="occupation" class="input" />
+      <div *ngIf="personForm.get('occupation')?.invalid && personForm.get('occupation')?.touched" class="text-red-500">
+        La ocupación es opcional, pero si se proporciona, debe ser válida.
+      </div>
+    </div>
+
+    <!-- Botón de Actualizar alineado a la izquierda -->
+    <div class="col-span-2 flex justify-end">
+      <button type="submit" mat-raised-button color="primary" [disabled]="personForm.invalid">Actualizar</button>
+    </div>
+  </form>
+</div>

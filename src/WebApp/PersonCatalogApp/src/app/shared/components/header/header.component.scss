@@ -1,0 +1,11 @@
+.bg-gray-800 {
+  background-color: #2d3748; // Color de fondo del encabezado
+}
+
+button {
+  @apply flex items-center space-x-1; // Espaciado y alineación para los botones
+}
+
+.mat-icon {
+  font-size: 24px; // Ajustar el tamaño del icono
+}

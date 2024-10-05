@@ -1,0 +1,9 @@
+// src/app/person/components/person-update/person-update.component.scss
+.input {
+  @apply block w-full p-2 border border-gray-300 rounded;
+}
+
+h2 {
+  @apply text-2xl font-bold mb-4;
+}
+

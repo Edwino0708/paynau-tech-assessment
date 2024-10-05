@@ -6,11 +6,11 @@ public class Person : Aggregate<PersonId>
     public string Email { get; private set; } = default!;
     public string PhoneNumber { get; private set; } = default!;
     public string Address { get; private set; } = default!;
-    public GenderStatus Gender { get; private set; } = default!;
+    public string Gender { get; private set; } = default!;
     public string Nationality { get; private set; } = default!;
     public string Occupation { get; private set; } = default!;
 
-    public static Person Create(PersonId id, string fullName, DateTime dateOfBirth, string email, string phoneNumber, string address, GenderStatus genderStatus, string nationality, string occupation)
+    public static Person Create(PersonId id, string fullName, DateTime dateOfBirth, string email, string phoneNumber, string address, string genderStatus, string nationality, string occupation)
     {
         var person = new Person
         {
@@ -29,7 +29,7 @@ public class Person : Aggregate<PersonId>
         return person;
     }
 
-    public void Update(string fullName, DateTime dateOfBirth, string email, string phoneNumber, string address, GenderStatus genderStatus, string nationality, string ocupation)
+    public void Update(string fullName, DateTime dateOfBirth, string email, string phoneNumber, string address, string genderStatus, string nationality, string ocupation)
     {
         FullName = fullName;
         DateOfBirth = dateOfBirth;

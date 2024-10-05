@@ -1,4 +1,5 @@
-﻿using PersonCatalog.Application.PersonDirectory.Commands.UpdatePerson;
+﻿using Microsoft.AspNetCore.Mvc;
+using PersonCatalog.Application.PersonDirectory.Commands.UpdatePerson;
 
 namespace PersonCatalog.API.EndPoints;
 
@@ -10,7 +11,7 @@ public class UpdatePerson : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/persons/", async ([AsParameters] UpdatePersonRequest request, ISender sender) => 
+        app.MapPut("/persons/", async ([FromBody] UpdatePersonRequest request, ISender sender) => 
         {
             var result = await sender.Send(new UpdatePersonCommand(request.Person));
             var response = result.Adapt<UpdatePersonReponse>();

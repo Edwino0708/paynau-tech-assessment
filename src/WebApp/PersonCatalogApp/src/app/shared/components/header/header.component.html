@@ -1,0 +1,14 @@
+<div class="bg-gray-800 text-white flex items-center justify-between p-4 shadow">
+  <button (click)="onToggleSidebar()" class="text-white">
+    <mat-icon>menu</mat-icon> <!-- Icono de menú para abrir/cerrar el sidebar -->
+  </button>
+
+  <h5 class="text-center text-lg font-bold flex-grow">Catalogo de Persona</h5>
+
+  <div class="flex items-center space-x-2">
+    <button class="flex items-center space-x-1 text-gray-300 hover:bg-gray-700 p-2 rounded transition duration-200">
+      <mat-icon class="text-gray-300 hover:text-white">person</mat-icon> <!-- Icono de usuario con efecto hover -->
+      <span>Admin</span> <!-- Cambié <p> por <span> para evitar problemas de estilo -->
+    </button>
+  </div>
+</div>

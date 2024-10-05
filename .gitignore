@@ -284,6 +284,13 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+# Ignorar archivos generados por Angular
+dist/
+out-tsc/
+.angular/
+src/**/*.js
+src/**/*.js.map
+src/**/*.d.ts
 
 # Visual Studio 6 build log
 *.plg
@@ -294,7 +301,7 @@ node_modules/
 # Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
 *.vbw
 
-# Visual Studio 6 auto-generated project file (contains which files were open etc.)
+# Visual Studio 6 auto-generated project file (contains which archivos fueron abiertos etc.)
 *.vbp
 
 # Visual Studio 6 workspace and project file (working project files containing files to include in project)
@@ -389,10 +396,3 @@ FodyWeavers.xsd
 
 # Windows Installer files from build outputs
 *.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# JetBrains Rider
-*.sln.iml

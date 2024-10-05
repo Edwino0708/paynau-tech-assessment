@@ -51,8 +51,10 @@ namespace PersonCatalog.Infrastructure.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime(6)");

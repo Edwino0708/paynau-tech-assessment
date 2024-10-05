@@ -1,0 +1,42 @@
+:host {
+  @apply transition-all; // Estilo del sidebar sin altura fija
+}
+
+.sidebar {
+  max-width: 250px; // Máximo ancho del sidebar
+  min-height: 100vh; // Altura mínima para que ocupe toda la pantalla
+  transition: width 0.3s ease; // Transición suave para el ancho
+  display: flex; // Flexbox para alinear contenido
+  flex-direction: column; // Coloca los elementos en columna
+
+  &.collapsed {
+    width: 50px; // Ancho colapsado
+  }
+
+  .ml-4 {
+    padding-left: 1rem; // Espaciado a la izquierda
+  }
+}
+
+ul {
+  list-style-type: none; // Quita los puntos de la lista
+  padding: 0; // Elimina el padding
+  margin: 0; // Elimina el margen
+  height: auto; // Altura automática para que el contenido ajuste
+  width: 100%; // Ancho completo
+}
+
+li {
+  height: auto; // Altura automática para cada ítem
+}
+
+a {
+  @apply flex items-center hover:bg-gray-600 rounded; // Estilos de enlace
+  height: 56px; // Establece una altura mínima para cada ítem (ajusta según tus necesidades)
+  width: 100%; // Asegúrate de que el enlace ocupe todo el ancho
+}
+
+.mat-icon {
+  font-size: 24px; // Tamaño del icono
+  margin-right: 8px; // Espacio entre el icono y el texto
+}
