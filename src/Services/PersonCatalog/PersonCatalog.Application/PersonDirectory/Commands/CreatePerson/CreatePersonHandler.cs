@@ -1,6 +1,6 @@
 ﻿namespace PersonCatalog.Application.PersonDirectory.Commands.CreatePerson;
 
-public class CreatePersonHandler(IApplicationDbContext dbContext)
+public class CreatePersonHandler(IApplicationDbContext dbContext, ICacheService cacheService)
     : ICommandHandler<CreatePersonCommand, CreatePersonResult>
 
 {
@@ -10,6 +10,8 @@ public class CreatePersonHandler(IApplicationDbContext dbContext)
 
         dbContext.Persons.Add(person);
         await dbContext.SaveChangesAsync(cancellationToken);
+        
+        cacheService.CleanAllAsync();
 
         return new CreatePersonResult(person.Id.Value);
     }

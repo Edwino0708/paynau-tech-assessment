@@ -1,4 +1,6 @@
-﻿namespace PersonCatalog.Application.PersonDirectory.Queries.GetPersonById;
+﻿using PersonCatalog.Application.Data;
+
+namespace PersonCatalog.Application.PersonDirectory.Queries.GetPersonById;
 
 public class GetPersonByIdHandler(IApplicationDbContext dbContext)
         : IQueryHandler<GetPersonByIdQuery, GetPersonByIdQueryResult>

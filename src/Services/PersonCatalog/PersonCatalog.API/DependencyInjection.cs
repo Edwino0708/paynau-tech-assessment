@@ -7,7 +7,8 @@ public static class DependencyInjection
         services.AddCarter();
         services.AddExceptionHandler<CustomExceptionHandler>();
         services.AddHealthChecks()
-           .AddMySql(configuration.GetConnectionString("Database")!);
+           .AddMySql(configuration.GetConnectionString("Database")!)
+           .AddRedis(configuration["Redis:ConnectionString"]);
 
         services.AddCors(options =>
         {

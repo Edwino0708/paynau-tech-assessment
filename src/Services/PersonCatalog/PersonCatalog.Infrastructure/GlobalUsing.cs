@@ -12,3 +12,4 @@ global using PersonCatalog.Domain.Abstractions;
 global using Microsoft.EntityFrameworkCore.ChangeTracking;
 global using PersonCatalog.Infrastructure.Data.Interceptors;
 global using PersonCatalog.Domain.ValueObjects;
+global using StackExchange.Redis;

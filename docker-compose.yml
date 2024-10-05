@@ -2,6 +2,9 @@ services:
   personCatalogdb:
     image: mysql:8.0
 
+  cachedb:
+    image: redis:latest
+
   personcatalog.api:
     image: ${DOCKER_REGISTRY-}personcatalogapi
     build:

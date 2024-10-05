@@ -1,6 +1,8 @@
-﻿namespace PersonCatalog.Application.PersonDirectory.Commands.DeletePerson;
+﻿
 
-public class DeletePersonHandler(IApplicationDbContext dbContext)
+namespace PersonCatalog.Application.PersonDirectory.Commands.DeletePerson;
+
+public class DeletePersonHandler(IApplicationDbContext dbContext, ICacheService cacheService)
     : ICommandHandler<DeletePersonCommand, DeletePersonResult>
 {
     public async Task<DeletePersonResult> Handle(DeletePersonCommand command, CancellationToken cancellationToken)
@@ -15,6 +17,8 @@ public class DeletePersonHandler(IApplicationDbContext dbContext)
 
         dbContext.Persons.Remove(person);
         await dbContext.SaveChangesAsync(cancellationToken);
+        
+        cacheService.CleanAllAsync();
 
         return new DeletePersonResult(true);
     }

@@ -14,4 +14,5 @@ global using PersonCatalog.Domain.ValueObjects;
 global using BuildingBlock.Pagination;
 global using PersonCatalog.Application.Extensions;
 global using PersonCatalog.Application.Exceptions;
-
+global using Newtonsoft.Json;
+global using PersonCatalog.Application.Data;

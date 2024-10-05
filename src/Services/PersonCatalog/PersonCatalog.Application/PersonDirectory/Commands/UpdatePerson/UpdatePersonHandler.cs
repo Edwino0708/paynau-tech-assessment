@@ -1,6 +1,6 @@
 ﻿namespace PersonCatalog.Application.PersonDirectory.Commands.UpdatePerson;
 
-public class UpdatePersonHandler(IApplicationDbContext dbContext)
+public class UpdatePersonHandler(IApplicationDbContext dbContext, ICacheService cacheService)
     : ICommandHandler<UpdatePersonCommand, UpdatePersonResult>
 {
     public async Task<UpdatePersonResult> Handle(UpdatePersonCommand command, CancellationToken cancellationToken)
@@ -17,6 +17,8 @@ public class UpdatePersonHandler(IApplicationDbContext dbContext)
 
         dbContext.Persons.Update(person);
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        cacheService.CleanAllAsync();
 
         return new UpdatePersonResult(true);
     }
