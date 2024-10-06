@@ -7,7 +7,7 @@
     <ProjectGuid>fa42607c-fb50-48e4-a834-09ceef995882</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>personcatalog.api</DockerServiceName>
+    <DockerServiceName>personcatalog</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

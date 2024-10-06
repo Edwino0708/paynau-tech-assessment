@@ -20,17 +20,32 @@ services:
     volumes:
      - redis-data:/data
 
+  webApp:
+    container_name: webApp
+    environment:
+     - NODE_ENV=production
+     - API_URL=http://localhost:5000/
+    depends_on:
+     - personcatalog.api
+    ports:
+      - "4300:4000"
+    volumes:    
+      - ./src/WebApp/person-catalog-app:/app
+      - /app/node_modules
+
   personcatalog.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=personCatalogdb;Port=3306;Database=PersonCatalogDb;User Id=admin;Password=admin123;
+      - Redis__ConnectionString=cachedb:6379,abortConnect=false
     depends_on:
-      - personCatalogdb
-      - cachedb
+        - personCatalogdb
+        - cachedb
     ports:
-      - "4000:8080"
-      - "4041:8081"
+        - "5000:8080"
+        - "5050:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
@@ -38,3 +53,4 @@ services:
 volumes:
   mysql_data:
   redis-data:  
+

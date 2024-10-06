@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   // El menú está visible por defecto
   isSidebarCollapsed = false;
+  title = "PersonCatalogApp";
 
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed; // Alternar el estado de colapso

@@ -12,14 +12,14 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Services/PersonCatalog/PersonCatalog.API/PersonCatalog.API.csproj", "Services/PersonCatalog/PersonCatalog.API/"]
-COPY ["Services/PersonCatalog/PersonCatalog.Application/PersonCatalog.Application.csproj", "Services/PersonCatalog/PersonCatalog.Application/"]
-COPY ["BuildingBlocks/BuildingBlock/BuildingBlock.csproj", "BuildingBlocks/BuildingBlock/"]
-COPY ["Services/PersonCatalog/PersonCatalog.Domain/PersonCatalog.Domain.csproj", "Services/PersonCatalog/PersonCatalog.Domain/"]
-COPY ["Services/PersonCatalog/PersonCatalog.Infrastructure/PersonCatalog.Infrastructure.csproj", "Services/PersonCatalog/PersonCatalog.Infrastructure/"]
-RUN dotnet restore "./Services/PersonCatalog/PersonCatalog.API/PersonCatalog.API.csproj"
+COPY ["src/Services/PersonCatalog/PersonCatalog.API/PersonCatalog.API.csproj", "src/Services/PersonCatalog/PersonCatalog.API/"]
+COPY ["src/Services/PersonCatalog/PersonCatalog.Application/PersonCatalog.Application.csproj", "src/Services/PersonCatalog/PersonCatalog.Application/"]
+COPY ["src/BuildingBlocks/BuildingBlock/BuildingBlock.csproj", "src/BuildingBlocks/BuildingBlock/"]
+COPY ["src/Services/PersonCatalog/PersonCatalog.Domain/PersonCatalog.Domain.csproj", "src/Services/PersonCatalog/PersonCatalog.Domain/"]
+COPY ["src/Services/PersonCatalog/PersonCatalog.Infrastructure/PersonCatalog.Infrastructure.csproj", "src/Services/PersonCatalog/PersonCatalog.Infrastructure/"]
+RUN dotnet restore "./src/Services/PersonCatalog/PersonCatalog.API/PersonCatalog.API.csproj"
 COPY . .
-WORKDIR "/src/Services/PersonCatalog/PersonCatalog.API"
+WORKDIR "/src/src/Services/PersonCatalog/PersonCatalog.API"
 RUN dotnet build "./PersonCatalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

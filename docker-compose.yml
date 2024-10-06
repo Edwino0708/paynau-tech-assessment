@@ -5,8 +5,15 @@ services:
   cachedb:
     image: redis:latest
 
+  webApp:
+   image: person-catalog-app:latest
+   build:
+      context: ./src/WebApp/person-catalog-app
+      dockerfile: Dockerfile
+
   personcatalog.api:
     image: ${DOCKER_REGISTRY-}personcatalogapi
     build:
-      context: src
-      dockerfile: Services/PersonCatalog/PersonCatalog.API/Dockerfile
+      context: .
+      dockerfile: src/Services/PersonCatalog/PersonCatalog.API/Dockerfile
+

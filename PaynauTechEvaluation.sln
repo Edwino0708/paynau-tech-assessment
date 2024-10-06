@@ -21,32 +21,11 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{EB0D709C-9D21-4853-85F5-4994983E73CB}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PersonCatalogApp", "src\WebApp\PersonCatalogApp\", "{F9BC9B4E-CA35-40AC-AC0F-FC6C3AA3CC39}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_54800"
-		Debug.AspNetCompiler.PhysicalPath = "src\WebApp\PersonCatalogApp\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54800\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_54800"
-		Release.AspNetCompiler.PhysicalPath = "src\WebApp\PersonCatalogApp\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54800\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "54800"
-		SlnRelativePath = "src\WebApp\PersonCatalogApp\"
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{507BE7D2-B0D1-41D2-B99B-81C3A13C84B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "tests\Domain.Tests\Domain.Tests.csproj", "{A341ED0B-D372-49D6-A218-23BED5118C9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests", "tests\Domain.Tests\Domain.Tests.csproj", "{A341ED0B-D372-49D6-A218-23BED5118C9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "tests\Application.Tests\Application.Tests.csproj", "{F3515629-7C68-4A09-9E1D-ED341201A298}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests", "tests\Application.Tests\Application.Tests.csproj", "{F3515629-7C68-4A09-9E1D-ED341201A298}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,10 +57,6 @@ Global
 		{FA42607C-FB50-48E4-A834-09CEEF995882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA42607C-FB50-48E4-A834-09CEEF995882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA42607C-FB50-48E4-A834-09CEEF995882}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9BC9B4E-CA35-40AC-AC0F-FC6C3AA3CC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9BC9B4E-CA35-40AC-AC0F-FC6C3AA3CC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9BC9B4E-CA35-40AC-AC0F-FC6C3AA3CC39}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9BC9B4E-CA35-40AC-AC0F-FC6C3AA3CC39}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{A341ED0B-D372-49D6-A218-23BED5118C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A341ED0B-D372-49D6-A218-23BED5118C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A341ED0B-D372-49D6-A218-23BED5118C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -100,7 +75,6 @@ Global
 		{0C08308D-B8AA-4917-AC69-35451A398614} = {85B281AC-6CFA-4FB4-AE68-7B1329DF82B7}
 		{AFF18F63-00A4-4D96-B911-8409DB7AC50C} = {85B281AC-6CFA-4FB4-AE68-7B1329DF82B7}
 		{4A7B39E2-128C-40B4-BD15-430E3BE08F8C} = {95860626-3B79-44EC-97CC-F6466581416B}
-		{F9BC9B4E-CA35-40AC-AC0F-FC6C3AA3CC39} = {EB0D709C-9D21-4853-85F5-4994983E73CB}
 		{A341ED0B-D372-49D6-A218-23BED5118C9A} = {507BE7D2-B0D1-41D2-B99B-81C3A13C84B8}
 		{F3515629-7C68-4A09-9E1D-ED341201A298} = {507BE7D2-B0D1-41D2-B99B-81C3A13C84B8}
 	EndGlobalSection
