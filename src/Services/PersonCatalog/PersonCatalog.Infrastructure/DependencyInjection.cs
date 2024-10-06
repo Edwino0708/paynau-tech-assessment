@@ -1,4 +1,5 @@
-﻿using PersonCatalog.Infrastructure.Services;
+﻿using PersonCatalog.Application.Services;
+using PersonCatalog.Infrastructure.Services;
 
 namespace PersonCatalog.Infrastructure;
 
@@ -31,6 +32,9 @@ public static class DependencyInjection
             provider.GetRequiredService<IConnectionMultiplexer>().GetDatabase());
         
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+        services.AddScoped<IPersonReadRepository, PersonReadRepository>();
+        services.AddScoped<IPersonWriteRepository, PersonWriteRepository>();
+
         services.AddScoped<ICacheService, CacheService>();
 
 

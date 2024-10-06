@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="PersonDirectory\EventHandlers\Domain\" />
     <Folder Include="PersonDirectory\EventHandlers\Integration\" />
   </ItemGroup>
 

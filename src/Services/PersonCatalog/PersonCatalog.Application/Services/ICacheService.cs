@@ -1,4 +1,4 @@
-﻿namespace PersonCatalog.Application.Data;
+﻿namespace PersonCatalog.Application.Services;
 
 public interface ICacheService
 {
@@ -10,5 +10,5 @@ public interface ICacheService
 
 public static class CacheKey
 {
-    public static string PersonsData { get;} = "persons";
+    public static string PersonsData { get; } = "persons";
 }

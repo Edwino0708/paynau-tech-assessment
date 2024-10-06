@@ -15,4 +15,7 @@ global using BuildingBlock.Pagination;
 global using PersonCatalog.Application.Extensions;
 global using PersonCatalog.Application.Exceptions;
 global using Newtonsoft.Json;
-global using PersonCatalog.Application.Data;
+global using MediatR;
+global using Microsoft.Extensions.Logging;
+global using PersonCatalog.Domain.Events;
+global using PersonCatalog.Application.Services;

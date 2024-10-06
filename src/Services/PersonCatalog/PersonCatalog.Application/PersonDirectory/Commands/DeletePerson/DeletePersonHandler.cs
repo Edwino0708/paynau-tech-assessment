@@ -1,25 +1,24 @@
 ﻿
-
 namespace PersonCatalog.Application.PersonDirectory.Commands.DeletePerson;
 
-public class DeletePersonHandler(IApplicationDbContext dbContext, ICacheService cacheService)
+public class DeletePersonHandler(IPersonWriteRepository personWriterRepository,IPersonReadRepository personReadRepository, ICacheService cacheService, ILogger<DeletePersonHandler> logger)
     : ICommandHandler<DeletePersonCommand, DeletePersonResult>
 {
     public async Task<DeletePersonResult> Handle(DeletePersonCommand command, CancellationToken cancellationToken)
-    {
+    {   
         var personId = PersonId.Of(command.Id);
-        var person = await dbContext.Persons.FindAsync([personId], cancellationToken: cancellationToken);
 
-        if (person is null)
+        // Verifica si la persona existe antes de intentar eliminarla
+        if (!await personReadRepository.ExistsAsync(personId, cancellationToken))
         {
             throw new PersonNotFoundException(command.Id);
         }
 
-        dbContext.Persons.Remove(person);
-        await dbContext.SaveChangesAsync(cancellationToken);
-        
-        cacheService.CleanAllAsync();
+        await personWriterRepository.DeleteAsync(personId, cancellationToken);
+        await cacheService.CleanAllAsync();
 
+        logger.LogInformation($"Person deleted with ID: {command.Id}");
         return new DeletePersonResult(true);
+    
     }
 }

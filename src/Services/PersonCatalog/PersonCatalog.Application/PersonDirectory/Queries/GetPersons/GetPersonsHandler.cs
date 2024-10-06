@@ -1,8 +1,9 @@
 ﻿using PersonCatalog.Application.Data;
+using PersonCatalog.Application.Services;
 
 namespace PersonCatalog.Application.PersonDirectory.Queries.GetPersons;
 
-public class GetPersonsHandler(IApplicationDbContext dbContext, ICacheService cacheService)
+public class GetPersonsHandler(IPersonReadRepository personReadRepository, ICacheService cacheService)
     : IQueryHandler<GetPersonsQuery, GetPersonsResult>
 {
     public async Task<GetPersonsResult> Handle(GetPersonsQuery query, CancellationToken cancellationToken)
@@ -24,14 +25,9 @@ public class GetPersonsHandler(IApplicationDbContext dbContext, ICacheService ca
                 return cachedResult;
             }
         }
+        var totalCount = await personReadRepository.CountAsync(cancellationToken);
 
-        var totalCount = await dbContext.Persons.LongCountAsync(cancellationToken);
-
-        var persons = await dbContext.Persons
-            .OrderBy(o => o.FullName)
-            .Skip(pageSize * pageIndex)
-            .Take(pageSize)
-            .ToListAsync();
+        var persons = await personReadRepository.GetPagedAsync(pageIndex, pageSize, cancellationToken);
 
         var result = new GetPersonsResult(
             new PaginateResult<PersonDto>(

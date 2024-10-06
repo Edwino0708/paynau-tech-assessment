@@ -2,9 +2,11 @@
 
 public class PersonNotFoundException : NotFoundException
 {
-    public PersonNotFoundException(Guid id) 
-        : base("Person", id)
-    {
-    }
+    public Guid PersonId { get; }
 
+    public PersonNotFoundException(Guid personId)
+        : base($"Person with ID {personId} not found.")
+    {
+        PersonId = personId;
+    }
 }

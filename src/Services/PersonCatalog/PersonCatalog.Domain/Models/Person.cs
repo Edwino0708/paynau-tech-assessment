@@ -25,6 +25,11 @@ public class Person : Aggregate<PersonId>
             Occupation = occupation
         };
 
+        if (!IsValidEmail(email))
+        {
+            throw new DomainExcepetion("Invalid email format");
+        }
+
         person.AddDomainEvent(new PersonCreatedEvent(person));
         return person;
     }
@@ -42,4 +47,10 @@ public class Person : Aggregate<PersonId>
 
         AddDomainEvent(new PersonUpdatedEvent(this));
     }
+
+    private static bool IsValidEmail(string email)
+    {
+        return email.Contains("@") && email.IndexOf('@') < email.Length - 1;
+    }
+
 }

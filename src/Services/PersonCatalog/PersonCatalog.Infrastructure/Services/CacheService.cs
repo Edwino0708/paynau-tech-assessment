@@ -1,4 +1,6 @@
-﻿namespace PersonCatalog.Infrastructure.Services;
+﻿using PersonCatalog.Application.Services;
+
+namespace PersonCatalog.Infrastructure.Services;
 
 public class CacheService(IDatabase _database)
     : ICacheService

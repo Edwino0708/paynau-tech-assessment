@@ -1,25 +1,26 @@
-﻿namespace PersonCatalog.Application.PersonDirectory.Commands.UpdatePerson;
+﻿
+using PersonCatalog.Application.Services;
 
-public class UpdatePersonHandler(IApplicationDbContext dbContext, ICacheService cacheService)
+namespace PersonCatalog.Application.PersonDirectory.Commands.UpdatePerson;
+
+public class UpdatePersonHandler(IPersonReadRepository readRepository, IPersonWriteRepository writeRepository, ICacheService cacheService, ILogger<UpdatePersonHandler> logger)
     : ICommandHandler<UpdatePersonCommand, UpdatePersonResult>
 {
     public async Task<UpdatePersonResult> Handle(UpdatePersonCommand command, CancellationToken cancellationToken)
     {
         var personId = PersonId.Of(command.Person.Id);
-        var person = await dbContext.Persons.FindAsync([personId], cancellationToken: cancellationToken);
 
-        if (person == null)
+        if (!await readRepository.ExistsAsync(personId, cancellationToken))
         {
             throw new PersonNotFoundException(command.Person.Id);
         }
 
+        var person = await readRepository.GetByIdAsync(personId, cancellationToken);
         UpdatePersonWithNewValues(person, command.Person);
+        await writeRepository.UpdateAsync(person, cancellationToken);
+        await cacheService.CleanAllAsync();
 
-        dbContext.Persons.Update(person);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
-        cacheService.CleanAllAsync();
-
+        logger.LogInformation($"Person updated: {command.Person.FullName} with ID: {command.Person.Id}");
         return new UpdatePersonResult(true);
     }
 
@@ -34,7 +35,7 @@ public class UpdatePersonHandler(IApplicationDbContext dbContext, ICacheService 
             genderStatus: personDto.Gender,
             nationality: personDto.Nationality,
             ocupation: personDto.Occupation
-            );
+        );
     }
 }
 
