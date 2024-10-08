@@ -1,5 +1,7 @@
-﻿using PersonCatalog.Application.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PersonCatalog.Application.Services;
 using PersonCatalog.Infrastructure.Services;
+using System;
 
 namespace PersonCatalog.Infrastructure;
 
@@ -11,7 +13,12 @@ public static class DependencyInjection
         string connectionString = configuration.GetConnectionString("Database");
         string redisConnection = configuration["Redis:ConnectionString"];
 
-        services.AddSingleton<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        // Register the interceptors as scoped services
+        services.AddScoped<AuditableEntityInterceptor>(); // Ensure this is registered
+        services.AddScoped<DispatchDomainEventsInterceptor>(); // Ensure this is registered
+
+        // Add the SaveChangesInterceptor interface
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
@@ -23,7 +30,13 @@ public static class DependencyInjection
                     maxRetryDelay: System.TimeSpan.FromSeconds(30),
                     errorNumbersToAdd: null));
 
-            options.AddInterceptors(sp.GetRequiredService<ISaveChangesInterceptor>());
+            // Resolve interceptors here
+            var auditableEntityInterceptor = sp.GetRequiredService<AuditableEntityInterceptor>();
+            var dispatchDomainEventsInterceptor = sp.GetRequiredService<DispatchDomainEventsInterceptor>();
+
+            // Add interceptors to the DbContext options
+            options.AddInterceptors(auditableEntityInterceptor);
+            options.AddInterceptors(dispatchDomainEventsInterceptor);
         });
 
         services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnection));

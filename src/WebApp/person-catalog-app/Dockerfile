@@ -16,18 +16,18 @@
   # Construye la aplicación
   RUN npm run build
 
-  # Etapa de producción
-  FROM node:18 AS production
+  # Etapa de development
+  FROM node:18 AS development
 
   # Establece el directorio de trabajo
   WORKDIR /app
 
   # Copia solo los archivos necesarios de la etapa de construcción
-  COPY --from=builder ./dist/person-catalog-app ./dist/person-catalog-app
+  COPY --from=builder /app/dist/person-catalog-app /usr/share/nginx/html
 
-  # Instala solo las dependencias de producción
+  # Instala solo las dependencias de development
   COPY package.json package-lock.json ./
-  RUN npm install --only=production
+  RUN npm install --only=development
 
   # Expone el puerto que usa tu aplicación
   EXPOSE 4000

@@ -28,6 +28,4 @@ await app.InitialiseDatabaseAsync();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
-
 app.Run();

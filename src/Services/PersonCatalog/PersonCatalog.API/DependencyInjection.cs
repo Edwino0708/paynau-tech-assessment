@@ -12,13 +12,13 @@ public static class DependencyInjection
 
         services.AddCors(options =>
         {
-            options.AddPolicy("AllowSpecificOrigins",
-                builder =>
-                {
-                    builder.WithOrigins("http://localhost:4200", "http://localhost:4300")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
-                });
+            options.AddPolicy("AllowAnyOrigin",
+              builder =>
+              {
+                  builder.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+              });
         });
 
         return services;
@@ -26,14 +26,16 @@ public static class DependencyInjection
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
-        app.UseCors("AllowSpecificOrigins");
-
-        app.MapCarter();
+        app.UseRouting();
+        app.UseCors("AllowAnyOrigin");
+       
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health", new HealthCheckOptions 
         {
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
+
+        app.MapCarter();
 
         return app;
     }

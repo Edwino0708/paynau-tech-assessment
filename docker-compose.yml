@@ -3,13 +3,7 @@ services:
     image: mysql:8.0
 
   cachedb:
-    image: redis:latest
-
-  webApp:
-   image: person-catalog-app:latest
-   build:
-      context: ./src/WebApp/person-catalog-app
-      dockerfile: Dockerfile
+    image: redis:latest  
 
   personcatalog.api:
     image: ${DOCKER_REGISTRY-}personcatalogapi
@@ -17,3 +11,8 @@ services:
       context: .
       dockerfile: src/Services/PersonCatalog/PersonCatalog.API/Dockerfile
 
+  webApp:
+    image: person-catalog-app:latest
+    build:
+      context: ./src/WebApp/person-catalog-app
+      dockerfile: Dockerfile
